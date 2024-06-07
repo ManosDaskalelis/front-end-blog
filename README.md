@@ -6,7 +6,10 @@ This project is a dynamic, feature-rich blog application built using Angular. It
 
 # Technologies Used
 
-Frontend: Angular, TypeScript, HTML, CSS, Bootstrap
-Backend: C#, ASP.NET Core
-Database: SQL Server
+Frontend: Angular, TypeScript, HTML, CSS, Bootstrap,
+
+Backend: C#, ASP.NET Core,
+
+Database: SQL Server,
+
 Authentication: JSON Web Tokens (JWT)
