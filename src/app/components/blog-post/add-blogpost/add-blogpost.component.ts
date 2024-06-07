@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddBlogPost } from 'src/app/shared/models/add-blogpost';
 import { FormsModule } from '@angular/forms';
-import { BlogpostService } from 'src/app/services/blogpost.service';
+import { BlogpostService } from 'src/app/services/blogPost.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-blogpost',
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export class AddBlogpostComponent {
   model: AddBlogPost;
+  addBlogPostSubscription?: Subscription;
 
   constructor(private blogPostService: BlogpostService,
     private router: Router
@@ -25,17 +27,22 @@ export class AddBlogpostComponent {
       fullContent: '',
       imageUrl: '',
       author: '',
-      visible: true,
+      isVisible: true,
       dateCreated: new Date()
     }
   }
 
   onFormSubmit(): void {
-    this.blogPostService.addBlogPost(this.model)
-    .subscribe({
-      next: (response) => {
-        this.router.navigateByUrl('/admin/blogposts')
-      }
-    })
+    this.addBlogPostSubscription = this.blogPostService.addBlogPost(this.model)
+      .subscribe({
+        next: (response) => {
+          this.router.navigateByUrl('/admin/blogposts')
+        }
+      })
   }
+
+
+  // ngOnDestroy(): void {
+  //   this.addBlogPostSubscription?.unsubscribe();
+  // }
 }
