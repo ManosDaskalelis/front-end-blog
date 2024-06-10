@@ -1,0 +1,13 @@
+.admin-textarea {
+    height: 350px;
+    max-height: 350px;
+}
+
+.markdown-preview {
+    max-height: 350px;
+    overflow-y: scroll;
+}
+
+.imgUrl  {
+    height: 100px;
+}

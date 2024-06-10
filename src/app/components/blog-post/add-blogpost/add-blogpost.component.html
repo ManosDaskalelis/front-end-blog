@@ -32,11 +32,30 @@
 
             <div class="mt-3">
                 <label for="fullContent" class="form-label">Full Content</label>
-                <textarea name="fullContent" id="fullContent" class="form-control" [(ngModel)]="model.fullContent"></textarea>
+                <div class="d-flex flex-row">
+                    <div class="col-6 p-2">
+                        <textarea name="fullContent" 
+                        id="fullContent"
+                        class="form-control admin-textarea"
+                        [(ngModel)]="model.fullContent">
+                        </textarea>
+                    </div>
+                    <div class="col-6 p-2 markdown-preview">
+                        <markdown [data]="model.fullContent"></markdown>
+                    </div>
+                 </div>
             </div>
 
             <div class="mt-3">
                 <label for="imageUrl" class="form-label">Image Url</label>
+
+                <ng-container *ngIf="model.imageUrl !== ''">
+                    <div>
+                        <img [src]="model.imageUrl" class="mt-2 imgUrl" alt="Image Preview">
+                    </div>
+                </ng-container>
+
+
                 <input type="text"
                  id="imageUrl"
                  name="imageUrl"
