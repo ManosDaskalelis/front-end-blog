@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { BlogpostService } from 'src/app/services/blogPost.service';
@@ -16,7 +16,7 @@ export class BlogpostListComponent implements OnInit {
 
   blogPosts$?: Observable<BlogPost[]>
 
-  constructor(private blogPostService: BlogpostService) {
+  constructor(@Inject(BlogpostService) private blogPostService: BlogpostService) {
 
   }
 

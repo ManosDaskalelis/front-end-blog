@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddBlogPost } from 'src/app/shared/models/add-blogpost';
 import { FormsModule } from '@angular/forms';
@@ -21,7 +21,7 @@ export class AddBlogpostComponent implements OnInit {
   categories$?: Observable<Category[]>
 
   constructor(
-    private blogPostService: BlogpostService,
+    @Inject(BlogpostService) private blogPostService: BlogpostService,
     private router: Router,
     private categoryService: CategoryService
   ) {
