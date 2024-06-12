@@ -1,11 +1,13 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddBlogPost } from 'src/app/shared/models/add-blogpost';
 import { FormsModule } from '@angular/forms';
 import { BlogpostService } from 'src/app/services/blogPost.service';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { MarkdownModule } from "ngx-markdown";
+import { CategoryService } from 'src/app/services/category.service';
+import { Category } from 'src/app/shared/models/category';
 
 @Component({
   selector: 'app-add-blogpost',
@@ -14,12 +16,14 @@ import { MarkdownModule } from "ngx-markdown";
   templateUrl: './add-blogpost.component.html',
   styleUrls: ['./add-blogpost.component.css']
 })
-export class AddBlogpostComponent {
+export class AddBlogpostComponent implements OnInit {
   model: AddBlogPost;
-  addBlogPostSubscription?: Subscription;
+  categories$?: Observable<Category[]>
 
-  constructor(private blogPostService: BlogpostService,
-    private router: Router
+  constructor(
+    private blogPostService: BlogpostService,
+    private router: Router,
+    private categoryService: CategoryService
   ) {
     this.model = {
       title: '',
@@ -29,12 +33,17 @@ export class AddBlogpostComponent {
       imageUrl: '',
       author: '',
       isVisible: true,
-      dateCreated: new Date()
+      dateCreated: new Date(),
+      categories: []
     }
+  }
+  
+  ngOnInit(): void {
+    this.categories$ = this.categoryService.getAllCategories();
   }
 
   onFormSubmit(): void {
-    this.addBlogPostSubscription = this.blogPostService.addBlogPost(this.model)
+    this.blogPostService.addBlogPost(this.model)
       .subscribe({
         next: (response) => {
           this.router.navigateByUrl('/admin/blogposts')
@@ -42,8 +51,4 @@ export class AddBlogpostComponent {
       })
   }
 
-
-  // ngOnDestroy(): void {
-  //   this.addBlogPostSubscription?.unsubscribe();
-  // }
 }
