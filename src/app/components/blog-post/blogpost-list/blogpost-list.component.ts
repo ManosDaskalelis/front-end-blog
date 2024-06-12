@@ -16,7 +16,7 @@ export class BlogpostListComponent implements OnInit {
 
   blogPosts$?: Observable<BlogPost[]>
 
-  constructor(@Inject(BlogpostService) private blogPostService: BlogpostService) {
+  constructor(private blogPostService: BlogpostService) {
 
   }
 

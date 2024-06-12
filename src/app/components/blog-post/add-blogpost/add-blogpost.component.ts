@@ -21,7 +21,7 @@ export class AddBlogpostComponent implements OnInit {
   categories$?: Observable<Category[]>
 
   constructor(
-    @Inject(BlogpostService) private blogPostService: BlogpostService,
+    private blogPostService: BlogpostService,
     private router: Router,
     private categoryService: CategoryService
   ) {
