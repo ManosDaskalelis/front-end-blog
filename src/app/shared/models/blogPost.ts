@@ -10,4 +10,5 @@ export interface BlogPost {
     author: string;
     dateCreated: Date;
     isVisible: boolean;
+    categories: Category[]
 }
