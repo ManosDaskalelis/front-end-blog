@@ -23,7 +23,7 @@ export class CategoryService {
   }
 
   getCategoryById(id: string): Observable<Category> {
-    return this.http.get<Category>(`${environment.apiBaseUrl}/api/Categories/GetCategoryById/${id}`)
+    return this.http.get<Category>(`${environment.apiBaseUrl}/api/Categories/GetCategory/${id}`)
   }
 
   updateCategory(id: string, updateCategory: UpdateCategory): Observable<Category> {

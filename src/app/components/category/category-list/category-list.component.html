@@ -14,7 +14,6 @@
                     <th>Name</th>
                     <th>Url Handle</th>
                     <th>Edit</th>
-                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,9 +23,6 @@
                     <td>{{category.urlHandle}}</td>
                     <td>
                         <a class="btn btn-secondary" [routerLink]="['/admin/categories', category.id]">Edit</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-danger" [routerLink]="['/admin/categories/delete', category.id]">Delete</a>
                     </td>
                 </tr>
             </tbody>
