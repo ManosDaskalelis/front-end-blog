@@ -9,11 +9,12 @@ import { MarkdownModule } from 'ngx-markdown';
 import { CategoryService } from 'src/app/services/category.service';
 import { Category } from 'src/app/shared/models/category';
 import { UpdateBlogPost } from 'src/app/shared/models/update-blogpost';
+import { ImageSelectorComponent } from 'src/app/shared/components/image-selector/image-selector.component';
 
 @Component({
   selector: 'app-edit-blogpost',
   standalone: true,
-  imports: [CommonModule, FormsModule, MarkdownModule],
+  imports: [CommonModule, FormsModule, MarkdownModule, ImageSelectorComponent],
   templateUrl: './edit-blogpost.component.html',
   styleUrls: ['./edit-blogpost.component.css']
 })
