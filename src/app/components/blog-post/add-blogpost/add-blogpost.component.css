@@ -56,3 +56,9 @@ h1 {
 .imgUrl  {
     height: 100px;
 }
+
+.exit-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}

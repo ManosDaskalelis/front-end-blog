@@ -7,7 +7,9 @@
             <div class="col-8 p-4 img-preview">
                 <ng-container *ngIf="blogImages$ | async as images">
                     <div class="d-flex flex-wrap">
-                        <div *ngFor="let image of images" class="img-container-styles me-1 bg-white d-flex align-items-center flex-column border p-3">
+                        <div *ngFor="let image of images"
+                        (click)="selectImage(image)"
+                        class="img-container-styles me-1 bg-white d-flex align-items-center flex-column border p-3">
                             <img class="img-style" [src]="image.url" [title]="image.title" >
                             <span class="mt-1">{{image.title}}</span>
                         </div>
