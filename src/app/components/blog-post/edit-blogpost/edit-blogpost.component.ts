@@ -26,6 +26,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
   getBlogPostSubscription?: Subscription;
   updateBlogPostSubscription?: Subscription;
   deleteBlogPostSubscription?: Subscription;
+  isImageSelectorVisible : boolean = false
 
   selectedCategories?: string[];
 
@@ -78,6 +79,14 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
         } 
       })
     }
+  }
+
+  openImageSelector(): void {
+    this.isImageSelectorVisible = true;
+  }
+
+  closeImageSelector(): void {
+    this.isImageSelectorVisible = false;
   }
 
   onDelete(): void {
