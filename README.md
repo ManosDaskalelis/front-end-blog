@@ -13,3 +13,8 @@ Backend: C#, ASP.NET Core,
 Database: SQL Server,
 
 Authentication: JSON Web Tokens (JWT)
+
+#To run the project
+
+1. open a terminal and run npm install
+2. run ng serve --open
